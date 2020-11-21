@@ -2,7 +2,24 @@ import React from "react";
 import Sample from "./app/components/sample";
 import SideMenu from "./app/components/SideMenu";
 import Header from "./app/components/Header";
-import { makeStyles, CssBaseline } from "@material-ui/core";
+import Employee from "./app/containers/Employee";
+import { makeStyles, CssBaseline, createMuiTheme, ThemeProvider } from "@material-ui/core";
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#333996",
+      light: "#3c44b126",
+    },
+    secondary: {
+      main: "#f83245",
+      light: "#f8324526",
+    },
+    background: {
+      default: "#f4f5fd",
+    },
+  },
+});
 
 const useStyles = makeStyles({
   appMain: {
@@ -13,17 +30,17 @@ const useStyles = makeStyles({
 
 function App() {
   const classes = useStyles();
-  console.log(classes);
 
   return (
-    <React.Fragment>
+    <ThemeProvider theme={theme}>
       <SideMenu />
       <div className={classes.appMain}>
         <Header />
+        <Employee />
       </div>
       <CssBaseline />
       {/* <Sample/> */}
-    </React.Fragment>
+    </ThemeProvider>
   );
 }
 
